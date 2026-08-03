@@ -1,5 +1,5 @@
 
-# COSMIC Desktop na Solus
+# COSMIC Desktop na Solus - Unofficial
 
 ## Opcja 1 — z katalogu
 
