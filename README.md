@@ -21,10 +21,9 @@ sudo eopkg it cosmic-desktop*.eopkg
 ## Opcja 2 — lokalne repo
 
 ```bash
-mkdir -p ~/Bin/LocalRepo
-cp ~/Pobrane/cosmic_paczki/*.eopkg ~/Bin/LocalRepo/
-sudo eopkg index --skip-signing ~/Bin/LocalRepo/
-sudo eopkg add-repo local-cosmic file://$HOME/Bin/LocalRepo/ -i 0
+cd ~/Pobrane/cosmic_paczki/
+sudo eopkg index --skip-signing .
+sudo eopkg ar cosmic-repo ~/Pobrane/cosmic_paczki/eopkg-index.xml.xz
 sudo eopkg it cosmic-desktop
 ```
 
