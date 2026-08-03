@@ -31,3 +31,9 @@ sudo eopkg it cosmic-desktop
 Aktualizacja repo później: powtórz `eopkg index`.
 
 ![COSMIC Desktop na Solus](cosmic-solus.png)
+
+
+## Licencja i Prawa Autorskie
+
+* **Receptury pakietów (`package.yml`):** Udostępniane na licencji **[MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)**. Receptury powstały na podstawie szablonów przygotowanych przez zespół **[AerynOS](https://github.com/AerynOS)** (Copyright © AerynOS Developers).
+* **Oprogramowanie COSMIC:** Składniki środowiska COSMIC Desktop są własnością **System76** oraz niezależnych twórców i podlegają ich własnym licencjom upstreamowym (głównie MIT, Apache-2.0 oraz GPL-3.0, w zależności od konkretnego komponentu).
