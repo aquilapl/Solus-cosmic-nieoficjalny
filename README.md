@@ -29,3 +29,5 @@ sudo eopkg it cosmic-desktop
 ```
 
 Aktualizacja repo później: powtórz `eopkg index`.
+
+![COSMIC Desktop na Solus](cosmic-solus.png)
