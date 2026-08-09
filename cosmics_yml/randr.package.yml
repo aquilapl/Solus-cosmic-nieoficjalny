@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-randr
+version     : 1.5.0
+release     : 44
+summary     : Cosmic Desktop display configuration
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-randr
+
+description : |
+    Cosmic Desktop display configuration
+
+source      :
+    - https://github.com/pop-os/cosmic-randr/archive/refs/tags/epoch-1.5.0.tar.gz : 55b7d6070f05c12477f18c1c72beab9f1f5409cd83b63c31846c8c1739993aa2
+
+networking  : true
+
+builddeps   :
+    - just
+    - which
+    - rust
+    - pkgconfig(dbus-1)
+    - pkgconfig(libudev)
+    - pkgconfig(xkbcommon)
+
+setup       : |
+    unset DISPLAY SUDO_USER SUDO_GID SUDO_UID SUDO_COMMAND CDPATH
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked --all
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+    %install_license LICENSE

@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-panel
+version     : 1.5.0
+release     : 48
+summary     : Cosmic Desktop Panel
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-panel
+
+description : |
+    Cosmic Desktop panel
+
+source      :
+    - https://github.com/pop-os/cosmic-panel/archive/refs/tags/epoch-1.5.0.tar.gz : 66d8dfbc8aa62ff6a91e83e5bdcb5363c663aac5a58c111152b258054a815222
+
+networking  : true
+
+builddeps   :
+    - just
+    - rust
+    - which
+    - pkgconfig(xkbcommon)
+
+rundeps     :
+    - cosmic-applets
+
+setup       : |
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+    %install_license LICENSE.md
+

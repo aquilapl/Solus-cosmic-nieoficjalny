@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-settings
+version     : 1.5.0
+release     : 55
+summary     : Cosmic Desktop Settings
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-settings
+
+description : |
+    Cosmic Desktop Settings
+
+source      :
+    - https://github.com/pop-os/cosmic-settings/archive/refs/tags/epoch-1.5.0.tar.gz : 06070fae46b77a57f906b0ee670e9d5c8ec10604359653bc6ca7b1eece6237ec
+
+networking  : true
+
+builddeps   :
+    - just
+    - rust
+    - which
+    - pkgconfig(dav1d)
+    - pkgconfig(libinput)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libudev)
+    - pkgconfig(xkbcommon)
+
+rundeps     : []
+
+setup       : |
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+    %install_license LICENSE.md
+

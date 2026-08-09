@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-store
+version     : 1.5.0
+release     : 46
+summary     : Cosmic Desktop Store
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-store
+
+description : |
+    Cosmic Desktop Store
+
+source      :
+    - https://github.com/pop-os/cosmic-store/archive/refs/tags/epoch-1.5.0.tar.gz : 5a1ed7f9e241b498592437f1d4bc125d39a6c743de15629148a2d27f4402610c
+
+networking  : true
+
+builddeps   :
+    - just
+    - rust
+    - pkgconfig(dbus-1)
+    - pkgconfig(flatpak)
+    - pkgconfig(glib-2.0)
+    - pkgconfig(libinput)
+    - pkgconfig(libssl)
+    - pkgconfig(libudev)
+    - pkgconfig(xkbcommon)
+
+setup       : |
+    unset DISPLAY SUDO_USER SUDO_GID SUDO_UID SUDO_COMMAND CDPATH
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked --features wgpu,flatpak,logind
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+    %install_license LICENSE

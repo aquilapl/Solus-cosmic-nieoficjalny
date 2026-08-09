@@ -1,0 +1,65 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-session
+version     : 1.5.0
+release     : 59
+summary     : Cosmic Session Management
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-session
+
+description : |
+    Cosmic Session Management
+
+source      :
+    - https://github.com/pop-os/cosmic-session/archive/refs/tags/epoch-1.5.0.tar.gz : c71cfe8061d3ea03534f594c05c99fcc4ea2cac4c30edeb96ac83554d8a67910
+
+networking  : true
+
+builddeps   :
+    - just
+    - rust
+    - which
+    - pkgconfig(xkbcommon)
+
+rundeps     :
+    - gawk
+    - bolt
+    - cosmic-applibrary
+    - cosmic-bg
+    - cosmic-comp
+    - cosmic-files
+    - cosmic-greeter
+    - cosmic-idle
+    - cosmic-notifications
+    - cosmic-osd
+    - cosmic-panel
+    - cosmic-randr
+    - cosmic-settings
+    - cosmic-settings-daemon
+    - cosmic-workspaces
+    - gnome-keyring
+    - switcheroo-control
+    - desktop-file-utils
+    - shared-mime-info
+    - upower
+    - xdg-user-dirs-gtk
+    - accountsservice
+    - noto-sans-ttf
+    - pciutils
+    - wireplumber
+    - xdg-desktop-portal-cosmic
+
+setup       : |
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+
+    install -Dm644 data/dconf/profile/cosmic $installdir$datadir/dconf/profile/cosmic
+    %install_license LICENSE.md
+

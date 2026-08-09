@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-term
+version     : 1.5.0
+release     : 50
+summary     : Cosmic Desktop Terminal Application
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-term
+
+description : |
+    Cosmic desktop Terminal Application
+
+source      :
+    - https://github.com/pop-os/cosmic-term/archive/refs/tags/epoch-1.5.0.tar.gz : ea942a519c33c6bc13dddfdd8c5addfc4307742c1f892fa67807646fc6db42bc
+
+networking  : true
+
+builddeps   :
+    - just
+    - rust
+    - which
+    - pkgconfig(xkbcommon)
+
+rundeps     : []
+
+setup       : |
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+    %install_license LICENSE
+

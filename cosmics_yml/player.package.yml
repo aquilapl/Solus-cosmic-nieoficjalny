@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-player
+version     : 1.5.0
+release     : 38
+summary     : COSMIC media player
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-player
+
+description : |
+    Cosmic Desktop Media Player
+
+source      :
+    - https://github.com/pop-os/cosmic-player/archive/refs/tags/epoch-1.5.0.tar.gz : 0ec42af1124e4afcc2076a1c2e94cbda7f461dc84d3464f42169e2109515ea00
+
+networking  : true
+
+builddeps   :
+    - just
+    - rust
+    - which
+    - pkgconfig(gstreamer-1.0)
+    - pkgconfig(gstreamer-plugins-base-1.0)
+    - pkgconfig(xkbcommon)
+
+rundeps     :
+    - gstreamer-plugins-good
+
+setup       : |
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+    %install_license LICENSE
+

@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-idle
+version     : 1.5.0
+release     : 41
+summary     : Cosmic Desktop Idle Daemon
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-idle
+
+description : |
+    Cosmic Desktop Idle Daemon
+
+source      :
+    - https://github.com/pop-os/cosmic-idle/archive/refs/tags/epoch-1.5.0.tar.gz : f6eab0ed81bba6bd3a6dfb3ec78471a152852c59e6887a74206f4b59865df7c1
+
+networking  : true
+
+builddeps   :
+    - just
+    - pkgconfig(xkbcommon)
+    - rust
+    - which
+
+setup       : |
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+    %install_license LICENSE
+

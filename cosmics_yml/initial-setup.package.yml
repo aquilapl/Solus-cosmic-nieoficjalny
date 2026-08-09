@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name: cosmic-initial-setup
+version: "1.5.0"
+release: 32
+summary: Cosmic Initial Setup
+license: GPL-3.0
+homepage: https://github.com/pop-os/cosmic-initial-setup
+source:
+  - https://github.com/pop-os/cosmic-initial-setup/archive/refs/tags/epoch-1.5.0.tar.gz : 18ab2cdc78d95467ca8eb22eea5ecb935cf8704bb53c4b99411b786ffe0f8550
+description: |
+  Cosmic Desktop Intial Setup Application
+builddeps:
+  - git-lfs
+  - just
+  - rust
+  - cargo-c
+  - pkgconfig(flatpak)
+  - pkgconfig(libinput)
+  - pkgconfig(libudev)
+  - pkgconfig(openssl)
+  - pkgconfig(xkbcommon)
+networking: true
+setup: |
+  %patch -p1 -i $pkgfiles/0001-Allow-xdg-directory-to-be-overridden.patch
+
+  unset RUSTC_WRAPPER || true
+  RUSTC_WRAPPER= cargo fetch --locked
+build: |
+  unset RUSTC_WRAPPER || true
+  export CARGO_TARGET_DIR="$PWD/target"
+  mkdir -p "$CARGO_TARGET_DIR/release/build"
+  mkdir -p "$CARGO_TARGET_DIR/debug/build"
+  mkdir -p "$CARGO_TARGET_DIR/release/deps"
+  mkdir -p "$CARGO_TARGET_DIR/debug/deps"
+
+  RUSTC_WRAPPER= cargo fetch --locked
+  RUSTC_WRAPPER= cargo build --release --bins
+install: |
+  unset RUSTC_WRAPPER || true
+  CARGO_TARGET_DIR="target" \
+  XDG_INSTALL_DIR="$datadir/xdg" \
+    RUSTC_WRAPPER= just rootdir=$installdir install
+  %install_license LICENSE

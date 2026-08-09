@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-wallpapers
+version     : 1.5.0
+release     : 40
+summary     : Cosmic Desktop Wallpapers
+component   : desktop
+license     : CC-BY-4.0
+homepage    : https://github.com/pop-os/cosmic-wallpapers
+
+description : |
+    Cosmic Desktop Wallpapers
+
+source      :
+    - https://github.com/pop-os/cosmic-wallpapers/archive/refs/tags/epoch-1.5.0.tar.gz : decdaf0b17fd1fda7de5adf763bb68ef46c39daae1bd627330f66cf1a679b99d
+
+install     : |
+    %make_install
+    %install_license LICENSE
+

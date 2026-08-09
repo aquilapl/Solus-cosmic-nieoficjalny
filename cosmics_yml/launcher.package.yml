@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-launcher
+version     : 1.5.0
+release     : 48
+summary     : Cosmic Desktop Launcher
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-launcher
+
+description : |
+    Cosmic Desktop Launcher
+
+source      :
+    - https://github.com/pop-os/cosmic-launcher/archive/refs/tags/epoch-1.5.0.tar.gz : 908cb0ef7e609ce0dec59f6d1cb4c249551883da42c957cd9dcb2e45892c7ec7
+
+networking  : true
+
+builddeps   :
+    - just
+    - pkgconfig(xkbcommon)
+    - rust
+    - which
+
+rundeps     : []
+
+setup       : |
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+    %install_license LICENSE.md
+

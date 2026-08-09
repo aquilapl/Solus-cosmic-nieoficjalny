@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-workspaces
+version     : 1.5.0
+release     : 46
+summary     : Cosmic Desktop Workspaces
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-workspaces-epoch
+
+description : |
+    Cosmic Desktop Workspaces
+
+source      :
+    - https://github.com/pop-os/cosmic-workspaces-epoch/archive/refs/tags/epoch-1.5.0.tar.gz : d7b54ce8dd229c6b76c2132b38d0814df656439bd4c014d04bd052143dcf4249
+
+networking  : true
+
+builddeps   :
+    - rust
+    - pkgconfig(dbus-1)
+    - pkgconfig(gbm)
+    - pkgconfig(libinput)
+    - pkgconfig(libudev)
+    - pkgconfig(xkbcommon)
+
+setup       : |
+    unset DISPLAY SUDO_USER SUDO_GID SUDO_UID SUDO_COMMAND CDPATH
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked --bin cosmic-workspaces
+
+install     : |
+    make install DESTDIR="$installdir" prefix="/usr" CARGO_TARGET_DIR="target"
+    %install_license LICENSE

@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-settings-daemon
+version     : 1.5.0
+release     : 49
+summary     : Cosmic Settings Daemon
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-settings-daemon
+
+description : |
+    Cosmic Settings Daemon
+
+source      :
+    - https://github.com/pop-os/cosmic-settings-daemon/archive/refs/tags/epoch-1.5.0.tar.gz : 5b404784098e5b92f989e7b7c4e0c645b2f60c3b385c283ad052d75b5d75952c
+
+networking  : true
+
+builddeps   :
+    - just
+    - mold
+    - rust
+    - pkgconfig(libgeoclue-2.0)
+    - pkgconfig(libinput)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libpulse)
+    - pkgconfig(libudev)
+    - pkgconfig(xkbcommon)
+
+rundeps     :
+    - cosmic-sound-theme
+    - geoclue
+    - power-profiles-daemon
+
+setup       : |
+    unset DISPLAY SUDO_USER SUDO_GID SUDO_UID SUDO_COMMAND CDPATH
+    unset RUSTC_WRAPPER
+    export GEOCLUE_AGENT="$(realpath $libdir/geoclue/geoclue-2.0/demos/agent)"
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    export GEOCLUE_AGENT="$(realpath $libdir/geoclue/geoclue-2.0/demos/agent)"
+    cargo build --release --locked --bin cosmic-settings-daemon
+
+install     : |
+    make install DESTDIR="$installdir" prefix="/usr" CARGO_TARGET_DIR="target"
+    %install_license LICENSE

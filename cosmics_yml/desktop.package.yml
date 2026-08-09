@@ -1,0 +1,55 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-desktop
+version     : 1.5
+release     : 17
+component   : desktop
+summary     : Cosmic Desktop Metapackage
+license     : GPL-3.0
+homepage    : https://system76.com/cosmic
+
+source      :
+    - https://github.com/pop-os/cosmic-epoch/archive/refs/tags/epoch-1.5.0.tar.gz : 6e74451b5b68f949652706e2928bc9a4369c8daec07cda0862d0831099a5c224
+
+extract     : false
+
+description : |
+    Cosmic Desktop Metapackage
+
+rundeps     :
+    - cosmic-applets
+    - cosmic-applibrary
+    - cosmic-bg
+    - cosmic-comp
+    - cosmic-edit
+    - cosmic-files
+    - cosmic-greeter
+    - cosmic-icons
+    - cosmic-idle
+    - cosmic-initial-setup
+    - cosmic-launcher
+    - cosmic-monitor
+    - cosmic-notifications
+    - cosmic-osd
+    - cosmic-panel
+    - cosmic-player
+    - cosmic-randr
+    - cosmic-screenshot
+    - cosmic-session
+    - cosmic-settings
+    - cosmic-settings-daemon
+    - cosmic-sound-theme
+    - cosmic-store
+    - cosmic-term
+    - cosmic-wallpapers
+    - cosmic-workspaces
+    - xdg-desktop-portal-cosmic
+    - desktop-file-utils
+    - shared-mime-info
+    - xdg-user-dirs-gtk
+    - noto-sans-ttf
+    - network-manager
+    - wireplumber
+
+install     : |
+    mkdir -p $installdir/usr/share/doc/cosmic-desktop
+    echo "cosmic meta package" > $installdir/usr/share/doc/cosmic-desktop/README

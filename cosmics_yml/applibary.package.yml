@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name: cosmic-applibrary
+version: 1.5.0
+release: 48
+source:
+    - https://github.com/pop-os/cosmic-applibrary/archive/refs/tags/epoch-1.5.0.tar.gz : 39dfa91d807240585ece7794190229832cb0c48162d87a29d62fb6a43a5238e6
+license: GPL-3.0
+homepage: https://github.com/pop-os/cosmic-applibrary
+summary: Cosmic Desktop App Launcher
+description: |
+    Cosmic Desktop App Launcher
+networking: true
+builddeps:
+    - just
+    - pkgconfig(libudev)
+    - pkgconfig(dbus-1)
+    - pkgconfig(xkbcommon)
+    - cargo-c
+setup: |
+    %cargo_fetch
+build: |
+    %cargo_build
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+    %install_license LICENSE.md

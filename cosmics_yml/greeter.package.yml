@@ -1,0 +1,69 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-greeter
+version     : 1.5.0
+release     : 57
+summary     : Cosmic Desktop Greeter
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-greeter
+
+description : |
+    Cosmic Desktop Greeter
+
+source      :
+    - https://github.com/pop-os/cosmic-greeter/archive/refs/tags/epoch-1.5.0.tar.gz : bbd49754abdef813b8bf86fa3e724c243d0baca27447b8f908c85cfe2a60a73e
+
+networking  : true
+
+builddeps   :
+    - just
+    - rust
+    - pkgconfig(dbus-1)
+    - pkgconfig(libinput)
+    - pkgconfig(libseat)
+    - pkgconfig(libudev)
+    - pkgconfig(pam)
+    - pkgconfig(xkbcommon)
+    - clang-devel
+    - solus-artwork
+
+rundeps     :
+    - greetd
+    - cosmic-wallpapers
+    - pam
+
+setup       : |
+    # Override fallback background z własnego pliku
+    cp $pkgfiles/background.jpg res/background.png
+
+    unset DISPLAY SUDO_USER SUDO_GID SUDO_UID SUDO_COMMAND CDPATH
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+    %patch -p1 -i $pkgfiles/0001-debian-Port-sample-service-pam-to-Serpent-OS.patch
+    %patch -p1 -i $pkgfiles/0001-no-git-hash.patch
+
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked --all
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+
+    # userdb
+    rm -rfv $installdir$libdir/sysusers.d
+    %install_file $pkgfiles/cosmic-greeter.group $installdir$libdir/userdb/cosmic-greeter.group
+    ln -s cosmic-greeter.group $installdir$libdir/userdb/23.group
+    %install_file $pkgfiles/cosmic-greeter.user $installdir$libdir/userdb/cosmic-greeter.user
+    ln -s cosmic-greeter.user $installdir$libdir/userdb/23.user
+
+    # systemd
+    %install_file $pkgfiles/cosmic-greeter-daemon.service $installdir$libdir/systemd/system/cosmic-greeter-daemon.service
+    %install_file $pkgfiles/cosmic-greeter.service $installdir$libdir/systemd/system/cosmic-greeter.service
+    %install_file $pkgfiles/cosmic-greeter.toml $installdir$datadir/greetd/cosmic-greeter.toml
+
+    # pam
+    %install_file debian/cosmic-greeter.pam $installdir$vendordir/pam.d/cosmic-greeter
+    %install_license LICENSE
+

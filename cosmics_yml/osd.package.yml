@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
+name        : cosmic-osd
+version     : 1.5.0
+release     : 47
+summary     : Cosmic Desktop OSD
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-osd
+
+description : |
+    Cosmic Desktop OSD
+
+source      :
+    - https://github.com/pop-os/cosmic-osd/archive/refs/tags/epoch-1.5.0.tar.gz : de1a409c95305059f0c79f1dff0089f7cf6aaf9b2b7201e982da9895d58ad4a3
+
+builddeps   :
+    - just
+    - rust
+    - pkgconfig(libinput)
+    - pkgconfig(libpipewire-0.3)
+    - pkgconfig(libpulse)
+    - pkgconfig(xkbcommon)
+
+rundeps     :
+    - polkit
+
+networking  : true
+
+environment : |
+    export POLKIT_AGENT_HELPER_1=$libdir/polkit-1/polkit-agent-helper-1
+
+setup       : |
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install
+    %install_license LICENSE
+
