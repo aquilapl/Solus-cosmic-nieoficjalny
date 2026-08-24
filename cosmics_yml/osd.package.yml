@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-osd
 version     : 1.5.0
-release     : 47
+release     : 48
 summary     : Cosmic Desktop OSD
 component   : desktop
 license     : GPL-3.0
@@ -27,7 +26,8 @@ rundeps     :
 networking  : true
 
 environment : |
-    export POLKIT_AGENT_HELPER_1=$libdir/polkit-1/polkit-agent-helper-1
+    export LIBDIR=/usr/lib64
+    export POLKIT_AGENT_HELPER_1=/usr/lib64/polkit-1/polkit-agent-helper-1
 
 setup       : |
     unset RUSTC_WRAPPER
@@ -35,9 +35,9 @@ setup       : |
 
 build       : |
     unset RUSTC_WRAPPER
+    export LIBDIR=/usr/lib64
+    export POLKIT_AGENT_HELPER_1=/usr/lib64/polkit-1/polkit-agent-helper-1
     cargo build --release --locked
 
 install     : |
     CARGO_TARGET_DIR="target" just rootdir=$installdir install
-    %install_license LICENSE
-
