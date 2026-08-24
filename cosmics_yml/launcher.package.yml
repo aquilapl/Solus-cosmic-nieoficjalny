@@ -21,7 +21,8 @@ builddeps   :
     - rust
     - which
 
-rundeps     : []
+rundeps     : 
+    - pop-os-launcher
 
 setup       : |
     unset RUSTC_WRAPPER
