@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-greeter
 version     : 1.5.0
-release     : 57
+release     : 58
 summary     : Cosmic Desktop Greeter
 component   : desktop
 license     : GPL-3.0
@@ -43,7 +42,6 @@ setup       : |
     %patch -p1 -i $pkgfiles/0001-debian-Port-sample-service-pam-to-Serpent-OS.patch
     %patch -p1 -i $pkgfiles/0001-no-git-hash.patch
 
-
 build       : |
     unset RUSTC_WRAPPER
     cargo build --release --locked --all
@@ -63,7 +61,7 @@ install     : |
     %install_file $pkgfiles/cosmic-greeter.service $installdir$libdir/systemd/system/cosmic-greeter.service
     %install_file $pkgfiles/cosmic-greeter.toml $installdir$datadir/greetd/cosmic-greeter.toml
 
-    # pam
-    %install_file debian/cosmic-greeter.pam $installdir$vendordir/pam.d/cosmic-greeter
-    %install_license LICENSE
-
+    # pam (poprawna instalacja do /etc/pam.d/ w Solusie)
+    install -d -m 0755 $installdir/etc/pam.d
+    install -m 0644 debian/cosmic-greeter.pam $installdir/etc/pam.d/cosmic-greeter
+    cd $installdir/etc/pam.d && ln -sf cosmic-greeter cosmic-lock
