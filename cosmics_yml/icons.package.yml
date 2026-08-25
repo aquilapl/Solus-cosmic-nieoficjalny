@@ -1,21 +1,26 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
-name: cosmic-icons
-version: "1.5.0"
-release: 46
-summary: Cosmic Icons by System76
-license: CC-BY-SA-4.0
-homepage: https://github.com/pop-os/cosmic-icons
-source:
+name        : cosmic-icons
+version     : 1.5.0
+release     : 46
+summary     : Cosmic Icons by System76
+component   : desktop
+license     : CC-BY-SA-4.0
+homepage    : https://github.com/pop-os/cosmic-icons
+
+source      :
   - https://github.com/pop-os/cosmic-icons/archive/refs/tags/epoch-1.5.0.tar.gz : e6caffc4c93f5afdaae3fbda4f3cc14363d3539cda1b0c5f478d32a8bb141c4c
-description: |
+
+description : |
   Cosmic Icons by System76
-builddeps:
+
+builddeps   :
   - just
   - hicolor-icon-theme
   - pkgconfig(gtk+-3.0)
-rundeps:
+
+rundeps     :
   - adwaita-icon-theme
-install: |
+
+install     : |
   just rootdir="$installdir" install
 
   if command -v gtk-update-icon-cache >/dev/null 2>&1; then
@@ -26,5 +31,3 @@ install: |
   else
     echo "gtk-update-icon-cache not found; skipping icon cache update"
   fi
-  %install_license COPYING
-  %install_license LICENSE

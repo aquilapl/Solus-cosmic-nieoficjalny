@@ -1,16 +1,15 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
-name: cosmic-comp
-version: "1.5.0"
-release: 54
-summary: Cosmic Desktop Compositor
-license: GPL-3.0
-homepage: https://github.com/pop-os/cosmic-comp
-source:
+name        : cosmic-comp
+version     : 1.5.0
+release     : 54
+summary     : Cosmic Desktop Compositor
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-comp
+source      :
   - https://github.com/pop-os/cosmic-comp/archive/refs/tags/epoch-1.5.0.tar.gz : ebdc79bd667b6ee167fcf5c4a616f56db7c24adfabc11ab3c3e572c5b2a52421
-description: |
+description : |
   Cosmic Desktop Compositor
-builddeps:
-  - just
+builddeps   :
   - rust
   - cargo-c
   - pkgconfig(gbm)
@@ -20,19 +19,19 @@ builddeps:
   - pkgconfig(libudev)
   - pkgconfig(pixman-1)
   - pkgconfig(xkbcommon)
-rundeps:
+rundeps     :
   - xorg-xwayland
   - iso-codes
   - shared-mime-info
-networking: true
-setup: |
+networking  : true
+setup       : |
   unset RUSTC_WRAPPER || true
   if ! command -v cargo >/dev/null 2>&1; then
     echo "ERROR: cargo not found; the build requires the 'cargo' binary. Add the package that provides cargo to builddeps." >&2
     exit 127
   fi
   RUSTC_WRAPPER= cargo fetch --locked
-build: |
+build       : |
   unset RUSTC_WRAPPER || true
   export CARGO_TARGET_DIR="$PWD/target"
   mkdir -p "$CARGO_TARGET_DIR/release/deps"
@@ -40,5 +39,10 @@ build: |
   RUSTC_WRAPPER= cargo fetch --locked
   RUSTC_WRAPPER= cargo build --release --bins
 install     : |
-    CARGO_TARGET_DIR="target" just rootdir=$installdir install
-    %install_license LICENSE
+  # Kopiowanie binarce kompozytora
+  install -Dm0755 target/release/cosmic-comp $installdir/usr/bin/cosmic-comp
+
+  # Kopiowanie zasobów (skróty, konfiguracje, ikony), jeśli znajdują się w źródłach
+  if [ -d "data" ]; then
+      install -Dm0644 data/*.desktop -t $installdir/usr/share/applications/ 2>/dev/null || true
+  fi
