@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-settings-daemon
-version     : 1.5.0
-release     : 49
+version     : 1.9.0
+release     : 53
 summary     : Cosmic Settings Daemon
 component   : desktop
 license     : GPL-3.0
@@ -11,7 +10,7 @@ description : |
     Cosmic Settings Daemon
 
 source      :
-    - https://github.com/pop-os/cosmic-settings-daemon/archive/refs/tags/epoch-1.5.0.tar.gz : 5b404784098e5b92f989e7b7c4e0c645b2f60c3b385c283ad052d75b5d75952c
+    - https://github.com/pop-os/cosmic-settings-daemon/archive/refs/tags/epoch-1.9.0.tar.gz : 69e34f67c1ae727a75b9a75e7901738adf2779ca1024f53d280d474d1af9ff6c
 
 networking  : true
 
@@ -44,4 +43,3 @@ build       : |
 
 install     : |
     make install DESTDIR="$installdir" prefix="/usr" CARGO_TARGET_DIR="target"
-    %install_license LICENSE

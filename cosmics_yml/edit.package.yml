@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-edit
-version     : 1.5.0
-release     : 51
+version     : 1.9.0
+release     : 55
 summary     : Cosmic Desktop Text Editor
 component   : desktop
 license     : GPL-3.0
@@ -11,7 +10,7 @@ description : |
     Cosmic desktop Text Editor
 
 source      :
-    - https://github.com/pop-os/cosmic-edit/archive/refs/tags/epoch-1.5.0.tar.gz : d567902b1e04829eedd428cd37372137908947cfafccc14ba485b1ad58832cba
+    - https://github.com/pop-os/cosmic-edit/archive/refs/tags/epoch-1.9.0.tar.gz : 2748de5388e637c8390801961961b063e1c15778c33912cdc62448994194a789
 
 networking  : true
 
@@ -35,5 +34,4 @@ build       : |
 
 install     : |
     CARGO_TARGET_DIR="target" just rootdir=$installdir install
-    %install_license LICENSE
 

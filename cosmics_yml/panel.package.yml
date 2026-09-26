@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-panel
-version     : 1.5.0
-release     : 48
+version     : 1.9.0
+release     : 52
 summary     : Cosmic Desktop Panel
 component   : desktop
 license     : GPL-3.0
@@ -11,7 +10,7 @@ description : |
     Cosmic Desktop panel
 
 source      :
-    - https://github.com/pop-os/cosmic-panel/archive/refs/tags/epoch-1.5.0.tar.gz : 66d8dfbc8aa62ff6a91e83e5bdcb5363c663aac5a58c111152b258054a815222
+   - https://github.com/pop-os/cosmic-panel/archive/refs/tags/epoch-1.9.0.tar.gz : 6b036076e162568b6d0230ab82916b30d06b4942cb5be6a39960e42b499cab9b
 
 networking  : true
 
@@ -34,5 +33,4 @@ build       : |
 
 install     : |
     CARGO_TARGET_DIR="target" just rootdir=$installdir install
-    %install_license LICENSE.md
 

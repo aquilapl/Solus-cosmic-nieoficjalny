@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-session
-version     : 1.5.0
-release     : 59
+version     : 1.9.0
+release     : 63
 summary     : Cosmic Session Management
 component   : desktop
 license     : GPL-3.0
@@ -11,7 +10,7 @@ description : |
     Cosmic Session Management
 
 source      :
-    - https://github.com/pop-os/cosmic-session/archive/refs/tags/epoch-1.5.0.tar.gz : c71cfe8061d3ea03534f594c05c99fcc4ea2cac4c30edeb96ac83554d8a67910
+      - https://github.com/pop-os/cosmic-session/archive/refs/tags/epoch-1.9.0.tar.gz : e6d093938ab59baafdccac576cb0bc1a1966c825a5fedf9cb498061d8099ed57
 
 networking  : true
 
@@ -61,5 +60,4 @@ install     : |
     CARGO_TARGET_DIR="target" just rootdir=$installdir install
 
     install -Dm644 data/dconf/profile/cosmic $installdir$datadir/dconf/profile/cosmic
-    %install_license LICENSE.md
 

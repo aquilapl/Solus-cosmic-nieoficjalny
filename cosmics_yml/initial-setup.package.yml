@@ -1,12 +1,11 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name: cosmic-initial-setup
-version: "1.5.0"
-release: 32
+version: 1.9.0
+release: 36
 summary: Cosmic Initial Setup
 license: GPL-3.0
 homepage: https://github.com/pop-os/cosmic-initial-setup
 source:
-  - https://github.com/pop-os/cosmic-initial-setup/archive/refs/tags/epoch-1.5.0.tar.gz : 18ab2cdc78d95467ca8eb22eea5ecb935cf8704bb53c4b99411b786ffe0f8550
+  - https://github.com/pop-os/cosmic-initial-setup/archive/refs/tags/epoch-1.9.0.tar.gz : 6327cce425d6590b8479bdd459f34e9522663fa47b86c9af020f055e746c61eb
 description: |
   Cosmic Desktop Intial Setup Application
 builddeps:
@@ -40,4 +39,3 @@ install: |
   CARGO_TARGET_DIR="target" \
   XDG_INSTALL_DIR="$datadir/xdg" \
     RUSTC_WRAPPER= just rootdir=$installdir install
-  %install_license LICENSE

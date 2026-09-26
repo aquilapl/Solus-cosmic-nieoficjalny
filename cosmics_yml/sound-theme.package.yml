@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-sound-theme
-version     : 1.5.0
-release     : 1
+version     : 1.9.0
+release     : 5
 component   : desktop
 summary     : System76 COSMIC Sound Theme
 license     : CC-BY-SA-4.0
@@ -11,7 +10,7 @@ description : |
     System76 COSMIC Sound Theme
 
 source      :
-    - https://github.com/pop-os/cosmic-sound-theme/archive/refs/tags/epoch-1.5.0.tar.gz : 1d4224d03f0b822a125915342a3387f115969903e55fa0c306857a69da4379c9
+     - https://github.com/pop-os/cosmic-sound-theme/archive/refs/tags/epoch-1.9.0.tar.gz : f9e1f34cb7b36475b25865976ed77aa59f17144dab0cc14bcf9938606ac042ed
 
 builddeps   :
     - meson
@@ -24,4 +23,3 @@ build       : |
 
 install     : |
     %ninja_install
-    %install_license LICENSE

@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-applets
-version     : 1.5.0
-release     : 53
+version     : 1.9.0
+release     : 57
 summary     : Cosmic Panel Applets
 component   : desktop
 license     : GPL-3.0
@@ -11,7 +10,7 @@ description : |
     Cosmic Panel Applets
 
 source      :
-    - https://github.com/pop-os/cosmic-applets/archive/refs/tags/epoch-1.5.0.tar.gz : ac9328e58f5e9cb9c7561a2ce4af212d4916d97c820741f0959366c7e1a0e3ba
+    - https://github.com/pop-os/cosmic-applets/archive/refs/tags/epoch-1.9.0.tar.gz : f113f74cd05b179ab0478dd5876b671880914600d5df56d518f8f80c08543037
 
 networking  : true
 
@@ -38,4 +37,3 @@ build       : |
 
 install     : |
     CARGO_TARGET_DIR="target" just rootdir=$installdir install
-    %install_license LICENSE

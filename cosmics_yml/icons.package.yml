@@ -1,13 +1,13 @@
 name        : cosmic-icons
-version     : 1.5.0
-release     : 46
+version     : 1.9.0
+release     : 50
 summary     : Cosmic Icons by System76
 component   : desktop
 license     : CC-BY-SA-4.0
 homepage    : https://github.com/pop-os/cosmic-icons
 
 source      :
-  - https://github.com/pop-os/cosmic-icons/archive/refs/tags/epoch-1.5.0.tar.gz : e6caffc4c93f5afdaae3fbda4f3cc14363d3539cda1b0c5f478d32a8bb141c4c
+  - https://github.com/pop-os/cosmic-icons/archive/refs/tags/epoch-1.9.0.tar.gz : 1b15f26b5a6b876aaeb82fd51c1bf242b2c26bb5899105dd03168feba4896ae5
 
 description : |
   Cosmic Icons by System76

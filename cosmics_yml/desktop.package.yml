@@ -1,14 +1,13 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-desktop
-version     : 1.5
-release     : 17
+version     : 1.9
+release     : 18
 component   : desktop
 summary     : Cosmic Desktop Metapackage
 license     : GPL-3.0
 homepage    : https://system76.com/cosmic
 
 source      :
-    - https://github.com/pop-os/cosmic-epoch/archive/refs/tags/epoch-1.5.0.tar.gz : 6e74451b5b68f949652706e2928bc9a4369c8daec07cda0862d0831099a5c224
+    - https://github.com/pop-os/cosmic-epoch/archive/refs/tags/epoch-1.9.0.tar.gz : 64e9a8abaa05636bf9b3025b073ea46a47fa50c795a812e8b8b2c0226b5c8482
 
 extract     : false
 
@@ -40,6 +39,7 @@ rundeps     :
     - cosmic-sound-theme
     - cosmic-store
     - cosmic-term
+    - cosmic-viewer
     - cosmic-wallpapers
     - cosmic-workspaces
     - xdg-desktop-portal-cosmic

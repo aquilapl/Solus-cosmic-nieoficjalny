@@ -1,0 +1,51 @@
+name        : cosmic-viewer
+version     : 1.9.0
+release     : 1
+summary     : Cosmic Desktop Image Viewer
+component   : desktop
+license     : GPL-3.0
+homepage    : https://github.com/pop-os/cosmic-viewer
+
+description : |
+    Cosmic Desktop Image Viewer
+
+source      :
+    - https://github.com/pop-os/cosmic-viewer/archive/refs/tags/epoch-1.9.0.tar.gz : a1c3b54c5f7dde278d17e4bd67395cd1ce4ef4a130ec1b0cfeebc05cc0ce3026
+
+networking  : true
+
+builddeps   :
+    - just
+    - rust
+    - cmake
+    - make
+    - nasm
+    - pkgconfig(SvtAv1Enc)
+    - pkgconfig(aom)
+    - pkgconfig(dav1d)
+    - pkgconfig(libde265)
+    - pkgconfig(libjpeg)
+    - pkgconfig(libopenjp2)
+    - pkgconfig(libpng)
+    - pkgconfig(libsharpyuv)
+    - pkgconfig(openh264)
+    - pkgconfig(rav1e)
+    - pkgconfig(x264)
+    - pkgconfig(x265)
+    - pkgconfig(xkbcommon)
+    - pkgconfig(zlib)
+
+setup       : |
+    # Use the system TurboJPEG library instead of compiling the vendored copy.
+    export TURBOJPEG_SOURCE=pkg-config
+
+    unset DISPLAY SUDO_USER SUDO_GID SUDO_UID SUDO_COMMAND CDPATH
+    unset RUSTC_WRAPPER
+    cargo fetch --locked
+
+build       : |
+    unset RUSTC_WRAPPER
+    cargo build --release --locked --all
+
+install     : |
+    CARGO_TARGET_DIR="target" just rootdir=$installdir install

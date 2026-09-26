@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-idle
-version     : 1.5.0
-release     : 41
+version     : 1.9.0
+release     : 45
 summary     : Cosmic Desktop Idle Daemon
 component   : desktop
 license     : GPL-3.0
@@ -11,7 +10,7 @@ description : |
     Cosmic Desktop Idle Daemon
 
 source      :
-    - https://github.com/pop-os/cosmic-idle/archive/refs/tags/epoch-1.5.0.tar.gz : f6eab0ed81bba6bd3a6dfb3ec78471a152852c59e6887a74206f4b59865df7c1
+   - https://github.com/pop-os/cosmic-idle/archive/refs/tags/epoch-1.9.0.tar.gz : acdd250cc845879352b1707c25636145dbdc3f0b4d17724d9a031e789a0592f1
 
 networking  : true
 
@@ -31,5 +30,4 @@ build       : |
 
 install     : |
     CARGO_TARGET_DIR="target" just rootdir=$installdir install
-    %install_license LICENSE
 

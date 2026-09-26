@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-workspaces
-version     : 1.5.0
-release     : 46
+version     : 1.9.0
+release     : 50
 summary     : Cosmic Desktop Workspaces
 component   : desktop
 license     : GPL-3.0
@@ -11,7 +10,7 @@ description : |
     Cosmic Desktop Workspaces
 
 source      :
-    - https://github.com/pop-os/cosmic-workspaces-epoch/archive/refs/tags/epoch-1.5.0.tar.gz : d7b54ce8dd229c6b76c2132b38d0814df656439bd4c014d04bd052143dcf4249
+    - https://github.com/pop-os/cosmic-workspaces-epoch/archive/refs/tags/epoch-1.9.0.tar.gz : cf9afff9ba023abe3bd996b82ceda7a295f63bcdbbd9ad784a9643a86c647f04
 
 networking  : true
 
@@ -34,4 +33,3 @@ build       : |
 
 install     : |
     make install DESTDIR="$installdir" prefix="/usr" CARGO_TARGET_DIR="target"
-    %install_license LICENSE

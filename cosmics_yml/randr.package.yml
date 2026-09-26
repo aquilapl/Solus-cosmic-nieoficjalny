@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-randr
-version     : 1.5.0
-release     : 44
+version     : 1.9.0
+release     : 48
 summary     : Cosmic Desktop display configuration
 component   : desktop
 license     : GPL-3.0
@@ -11,7 +10,7 @@ description : |
     Cosmic Desktop display configuration
 
 source      :
-    - https://github.com/pop-os/cosmic-randr/archive/refs/tags/epoch-1.5.0.tar.gz : 55b7d6070f05c12477f18c1c72beab9f1f5409cd83b63c31846c8c1739993aa2
+    - https://github.com/pop-os/cosmic-randr/archive/refs/tags/epoch-1.9.0.tar.gz : 6c082cba6b80c5d89b02aec7ed315c9de8452cd413f5181ece43d7fdb3011481
 
 networking  : true
 
@@ -34,4 +33,3 @@ build       : |
 
 install     : |
     CARGO_TARGET_DIR="target" just rootdir=$installdir install
-    %install_license LICENSE

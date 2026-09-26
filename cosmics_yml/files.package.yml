@@ -1,7 +1,6 @@
-# yaml-language-server: $schema=/usr/share/ypkg/schema/schema.json
 name        : cosmic-files
-version     : 1.5.0
-release     : 53
+version     : 1.9.0
+release     : 58
 summary     : Cosmic Desktop File Browser
 component   : desktop
 license     : GPL-3.0
@@ -11,7 +10,7 @@ description : |
     Cosmic desktop File Browser
 
 source      :
-    - https://github.com/pop-os/cosmic-files/archive/refs/tags/epoch-1.5.0.tar.gz : da8567bcd0a15ca6522a8800ec800701f8e994ef5da52513b3afdf95370e3bf1
+        - https://github.com/pop-os/cosmic-files/archive/refs/tags/epoch-1.9.0.tar.gz : c30cb40b8177112c821753a95134ba82e64dfd8230f5c371a1c89a4b0d066309
 
 networking  : true
 
@@ -36,11 +35,10 @@ setup       : |
     cargo fetch --locked
 
 build       : |
-    unset RUSTC_WRAPPER
-    cargo build --release --locked -p cosmic-files
-    cargo build --release --locked -p cosmic-files-applet
+    %cargo_build -p cosmic-files
+    %cargo_build -p cosmic-files-applet
+    %cargo_build -p cosmic-files-thumbnailer
 
 install     : |
     CARGO_TARGET_DIR="target" just rootdir=$installdir install
-    %install_license LICENSE
 
