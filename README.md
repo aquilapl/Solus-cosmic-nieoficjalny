@@ -1,5 +1,4 @@
-
-# COSMIC Desktop na Solus - Unofficial
+# COSMIC Desktop na Solus
 
 ## Opcja 1 — z katalogu
 
@@ -11,11 +10,17 @@ for pkg in xdg-desktop-portal-cosmic cosmic-applets cosmic-panel cosmic-files \
            cosmic-workspaces cosmic-wallpapers cosmic-greeter cosmic-idle cosmic-bg \
            cosmic-sound-theme cosmic-settings-daemon cosmic-notifications cosmic-session \
            cosmic-icons cosmic-edit cosmic-initial-setup cosmic-screenshot cosmic-term \
-           cosmic-monitor cosmic-store cosmic-player cosmic-launcher; do
+           cosmic-monitor cosmic-store cosmic-player cosmic-launcher cosmic-viewer; do
     sudo eopkg it "$pkg"*.eopkg
 done
 
 sudo eopkg it cosmic-desktop*.eopkg
+```
+
+Zawiesza się na jakimś pakiecie:
+```bash
+sudo eopkg check
+sudo eopkg it -D nazwa_pakietu*.eopkg
 ```
 
 ## Opcja 2 — lokalne repo
@@ -27,12 +32,12 @@ sudo eopkg ar cosmic-repo ~/Pobrane/cosmic_paczki/eopkg-index.xml.xz
 sudo eopkg it cosmic-desktop
 ```
 
-Aktualizacja repo później: powtórz `eopkg index`.
+Aktualizacja repo po dodaniu nowych paczek do katalogu:
+```bash
+sudo eopkg index --skip-signing .
+sudo eopkg ur
+```
 
-![COSMIC Desktop na Solus](cosmic-solus.png)
+## Licencje
 
-
-## Licencja i Prawa Autorskie
-
-* **Receptury pakietów (`package.yml`):** Udostępniane na licencji **[MPL-2.0](https://www.mozilla.org/en-US/MPL/2.0/)**. Receptury powstały na podstawie szablonów przygotowanych przez zespół **[AerynOS](https://github.com/AerynOS)** (Copyright © AerynOS Developers).
-* **Oprogramowanie COSMIC:** Składniki środowiska COSMIC Desktop są własnością **System76** oraz niezależnych twórców i podlegają ich własnym licencjom upstreamowym (głównie MIT, Apache-2.0 oraz GPL-3.0, w zależności od konkretnego komponentu).
+Poszczególne pakiety COSMIC pochodzą z github.com/pop-os i zachowują licencje nadane przez System76 (GPL-3.0 dla aplikacji, MPL-2.0 dla części bibliotek, CC-BY-SA-4.0 dla ikon).
