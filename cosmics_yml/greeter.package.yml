@@ -1,6 +1,6 @@
 name        : cosmic-greeter
 version     : 1.10.0
-release     : 66
+release     : 67
 summary     : Cosmic Desktop Greeter
 component   : desktop
 license     : GPL-3.0
@@ -10,7 +10,7 @@ description : |
     Cosmic Desktop Greeter
 
 source      :
-- https://github.com/pop-os/cosmic-greeter/archive/refs/tags/epoch-1.10.0.tar.gz : b4dcf23c2bc9719de4aa2c4c315ed30d1d142477b213fcca3d61856ef46dd9b8
+    - https://github.com/pop-os/cosmic-greeter/archive/refs/tags/epoch-1.10.0.tar.gz : b4dcf23c2bc9719de4aa2c4c315ed30d1d142477b213fcca3d61856ef46dd9b8
 
 networking  : true
 

@@ -1,6 +1,6 @@
 name        : cosmic-randr
 version     : 1.10.0
-release     : 52
+release     : 53
 summary     : Cosmic Desktop display configuration
 component   : desktop
 license     : GPL-3.0
@@ -10,7 +10,7 @@ description : |
     Cosmic Desktop display configuration
 
 source      :
-- https://github.com/pop-os/cosmic-randr/archive/refs/tags/epoch-1.10.0.tar.gz : 4556bc8954b212b74aabc60960c1f5f63af1c3cb3abe6b7e00d8278094a6ab1c
+    - https://github.com/pop-os/cosmic-randr/archive/refs/tags/epoch-1.10.0.tar.gz : 4556bc8954b212b74aabc60960c1f5f63af1c3cb3abe6b7e00d8278094a6ab1c
 
 networking  : true
 

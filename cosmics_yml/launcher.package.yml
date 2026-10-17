@@ -1,6 +1,6 @@
 name        : cosmic-launcher
 version     : 1.10.0
-release     : 56
+release     : 57
 summary     : Cosmic Desktop Launcher
 component   : desktop
 license     : GPL-3.0
@@ -10,7 +10,7 @@ description : |
     Cosmic Desktop Launcher
 
 source      :
-- https://github.com/pop-os/cosmic-launcher/archive/refs/tags/epoch-1.10.0.tar.gz : 6700ad7c036b323f877fbedd43d021f50128651af4265554466eb3847013774a
+    - https://github.com/pop-os/cosmic-launcher/archive/refs/tags/epoch-1.10.0.tar.gz : 6700ad7c036b323f877fbedd43d021f50128651af4265554466eb3847013774a
 
 networking  : true
 

@@ -1,6 +1,6 @@
 name        : cosmic-monitor
 version     : 1.10.0
-release     : 13
+release     : 14
 summary     : Cosmic System Monitor
 component   : desktop
 license     : GPL-3.0
@@ -10,7 +10,7 @@ description : |
     Cosmic System Monitor
 
 source      :
-- https://github.com/pop-os/cosmic-monitor/archive/refs/tags/epoch-1.10.0.tar.gz : ad05af39c240f252bf1191a58563c3d3e858afeeec8334879bba0050c9697496
+    - https://github.com/pop-os/cosmic-monitor/archive/refs/tags/epoch-1.10.0.tar.gz : ad05af39c240f252bf1191a58563c3d3e858afeeec8334879bba0050c9697496
 
 networking  : true
 

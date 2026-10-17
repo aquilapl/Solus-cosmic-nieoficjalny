@@ -1,6 +1,6 @@
 name        : cosmic-player
 version     : 1.10.0
-release     : 46
+release     : 47
 summary     : COSMIC media player
 component   : desktop
 license     : GPL-3.0
@@ -10,7 +10,7 @@ description : |
     Cosmic Desktop Media Player
 
 source      :
-- https://github.com/pop-os/cosmic-player/archive/refs/tags/epoch-1.10.0.tar.gz : 421bf528742a737e8a99b9ea7ce753a5ddc8a37f7f694e774292a539e793f5b6
+    - https://github.com/pop-os/cosmic-player/archive/refs/tags/epoch-1.10.0.tar.gz : 421bf528742a737e8a99b9ea7ce753a5ddc8a37f7f694e774292a539e793f5b6
 
 networking  : true
 

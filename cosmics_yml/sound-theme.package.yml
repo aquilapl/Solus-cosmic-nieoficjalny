@@ -1,6 +1,6 @@
 name        : cosmic-sound-theme
 version     : 1.10.0
-release     : 9
+release     : 10
 component   : desktop
 summary     : System76 COSMIC Sound Theme
 license     : CC-BY-SA-4.0
@@ -10,7 +10,7 @@ description : |
     System76 COSMIC Sound Theme
 
 source      :
-- https://github.com/pop-os/cosmic-sound-theme/archive/refs/tags/epoch-1.10.0.tar.gz : 4639c1e496e5c4387a9798f85f52ed2a9e0d466fddc5d0857a1d619e9d76dccb
+    - https://github.com/pop-os/cosmic-sound-theme/archive/refs/tags/epoch-1.10.0.tar.gz : 4639c1e496e5c4387a9798f85f52ed2a9e0d466fddc5d0857a1d619e9d76dccb
 
 builddeps   :
     - meson

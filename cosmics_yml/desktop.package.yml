@@ -1,6 +1,6 @@
 name        : cosmic-desktop
 version     : 1.10.0
-release     : 22
+release     : 23
 component   : desktop
 summary     : Cosmic Desktop Metapackage
 license     : GPL-3.0

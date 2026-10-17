@@ -1,6 +1,6 @@
 name        : cosmic-osd
 version     : 1.10.0
-release     : 55
+release     : 56
 summary     : Cosmic Desktop OSD
 component   : desktop
 license     : GPL-3.0
@@ -10,7 +10,7 @@ description : |
     Cosmic Desktop OSD
 
 source      :
-- https://github.com/pop-os/cosmic-osd/archive/refs/tags/epoch-1.10.0.tar.gz : 41cd18721bee2c9123a9fb5f8c09617ad0033f5cf688933fff47f6ac28c825c0
+    - https://github.com/pop-os/cosmic-osd/archive/refs/tags/epoch-1.10.0.tar.gz : 41cd18721bee2c9123a9fb5f8c09617ad0033f5cf688933fff47f6ac28c825c0
 
 builddeps   :
     - just

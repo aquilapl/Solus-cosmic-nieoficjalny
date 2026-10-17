@@ -1,6 +1,6 @@
 name        : cosmic-bg
 version     : 1.10.0
-release     : 56
+release     : 57
 summary     : Cosmic Desktop Background Service
 component   : desktop
 license     : GPL-3.0
@@ -10,7 +10,7 @@ description : |
     Cosmic Desktop Background Service
 
 source      :
-- https://github.com/pop-os/cosmic-bg/archive/refs/tags/epoch-1.10.0.tar.gz : 1595505815bdf96cf4cfd16736a1d235cb249d78e4a35dccd02e3c997649b357
+    - https://github.com/pop-os/cosmic-bg/archive/refs/tags/epoch-1.10.0.tar.gz : 1595505815bdf96cf4cfd16736a1d235cb249d78e4a35dccd02e3c997649b357
 
 networking  : true
 

@@ -1,6 +1,6 @@
 name        : cosmic-applets
 version     : 1.10.0
-release     : 61
+release     : 62
 summary     : Cosmic Panel Applets
 component   : desktop
 license     : GPL-3.0
@@ -10,7 +10,7 @@ description : |
     Cosmic Panel Applets
 
 source      :
-- https://github.com/pop-os/cosmic-applets/archive/refs/tags/epoch-1.10.0.tar.gz : fa922a252d87eeb37e5847fa6840e321f9f75961ae3c9bd6d7ab1b779779f08e
+    - https://github.com/pop-os/cosmic-applets/archive/refs/tags/epoch-1.10.0.tar.gz : fa922a252d87eeb37e5847fa6840e321f9f75961ae3c9bd6d7ab1b779779f08e
 
 networking  : true
 

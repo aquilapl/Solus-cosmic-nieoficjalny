@@ -1,6 +1,6 @@
 name        : cosmic-wallpapers
 version     : 1.10.0
-release     : 48
+release     : 49
 summary     : Cosmic Desktop Wallpapers
 component   : desktop
 license     : CC-BY-4.0
@@ -10,7 +10,7 @@ description : |
     Cosmic Desktop Wallpapers
 
 source      :
-- https://github.com/pop-os/cosmic-wallpapers/archive/refs/tags/epoch-1.10.0.tar.gz : a831e9b1d3c4aa10a391cd57c136c0511278a6ed383abd65edd8b9b0d81e3169
+    - https://github.com/pop-os/cosmic-wallpapers/archive/refs/tags/epoch-1.10.0.tar.gz : a831e9b1d3c4aa10a391cd57c136c0511278a6ed383abd65edd8b9b0d81e3169
 
 install     : |
     %make_install

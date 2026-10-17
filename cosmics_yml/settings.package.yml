@@ -1,6 +1,6 @@
 name        : cosmic-settings
 version     : 1.10.0
-release     : 63
+release     : 64
 summary     : Cosmic Desktop Settings
 component   : desktop
 license     : GPL-3.0
@@ -10,7 +10,7 @@ description : |
     Cosmic Desktop Settings
 
 source      :
-- https://github.com/pop-os/cosmic-settings/archive/refs/tags/epoch-1.10.0.tar.gz : d11ba9d67d3fa279b659e31d64024366358b3f207ce6fe25564772805e517f34
+    - https://github.com/pop-os/cosmic-settings/archive/refs/tags/epoch-1.10.0.tar.gz : d11ba9d67d3fa279b659e31d64024366358b3f207ce6fe25564772805e517f34
 
 networking  : true
 
