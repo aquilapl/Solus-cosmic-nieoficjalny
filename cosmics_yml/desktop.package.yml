@@ -1,13 +1,13 @@
 name        : cosmic-desktop
-version     : 1.9
-release     : 18
+version     : 1.10.0
+release     : 22
 component   : desktop
 summary     : Cosmic Desktop Metapackage
 license     : GPL-3.0
 homepage    : https://system76.com/cosmic
 
 source      :
-    - https://github.com/pop-os/cosmic-epoch/archive/refs/tags/epoch-1.9.0.tar.gz : 64e9a8abaa05636bf9b3025b073ea46a47fa50c795a812e8b8b2c0226b5c8482
+    - https://github.com/pop-os/cosmic-epoch/archive/refs/tags/epoch-1.10.0.tar.gz : f4cd4a347686154eddd5143bf30a6c8ce546b609e99a3c8a84846f5f68ae4e3f
 
 extract     : false
 

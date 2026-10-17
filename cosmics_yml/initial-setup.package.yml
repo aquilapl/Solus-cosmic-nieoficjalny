@@ -1,11 +1,11 @@
 name: cosmic-initial-setup
-version: 1.9.0
-release: 36
+version     : 1.10.0
+release     : 40
 summary: Cosmic Initial Setup
 license: GPL-3.0
 homepage: https://github.com/pop-os/cosmic-initial-setup
 source:
-  - https://github.com/pop-os/cosmic-initial-setup/archive/refs/tags/epoch-1.9.0.tar.gz : 6327cce425d6590b8479bdd459f34e9522663fa47b86c9af020f055e746c61eb
+- https://github.com/pop-os/cosmic-initial-setup/archive/refs/tags/epoch-1.10.0.tar.gz : 9f6320bf51a9edfb63d0bf896e39a34a07e6921b8b67e316ace47081ca368080
 description: |
   Cosmic Desktop Intial Setup Application
 builddeps:

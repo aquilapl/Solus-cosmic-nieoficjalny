@@ -1,6 +1,6 @@
 name        : cosmic-edit
-version     : 1.9.0
-release     : 55
+version     : 1.10.0
+release     : 59
 summary     : Cosmic Desktop Text Editor
 component   : desktop
 license     : GPL-3.0
@@ -10,7 +10,7 @@ description : |
     Cosmic desktop Text Editor
 
 source      :
-    - https://github.com/pop-os/cosmic-edit/archive/refs/tags/epoch-1.9.0.tar.gz : 2748de5388e637c8390801961961b063e1c15778c33912cdc62448994194a789
+- https://github.com/pop-os/cosmic-edit/archive/refs/tags/epoch-1.10.0.tar.gz : 2cd6e262d5762a62df6e27691b76991ebd0aa7674436e78f8bbee3d4bf8c9ec2
 
 networking  : true
 

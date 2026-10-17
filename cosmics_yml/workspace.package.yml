@@ -1,35 +1,28 @@
 name        : cosmic-workspaces
-version     : 1.9.0
-release     : 50
-summary     : Cosmic Desktop Workspaces
-component   : desktop
-license     : GPL-3.0
+version     : 1.10.0
+release     : 51
 homepage    : https://github.com/pop-os/cosmic-workspaces-epoch
-
+source      :
+    - https://github.com/pop-os/cosmic-workspaces-epoch/archive/refs/tags/epoch-1.10.0.tar.gz : 914c229f29b2dc1eaf91757b7f3d51ee7d58be5687fa6a5d7ad83b23121fd0f6
+summary     : Cosmic Desktop Workspaces
 description : |
     Cosmic Desktop Workspaces
-
-source      :
-    - https://github.com/pop-os/cosmic-workspaces-epoch/archive/refs/tags/epoch-1.9.0.tar.gz : cf9afff9ba023abe3bd996b82ceda7a295f63bcdbbd9ad784a9643a86c647f04
-
-networking  : true
-
+license     : GPL-3.0
 builddeps   :
+    - just
     - rust
     - pkgconfig(dbus-1)
     - pkgconfig(gbm)
     - pkgconfig(libinput)
     - pkgconfig(libudev)
     - pkgconfig(xkbcommon)
-
+networking  : true
 setup       : |
     unset DISPLAY SUDO_USER SUDO_GID SUDO_UID SUDO_COMMAND CDPATH
     unset RUSTC_WRAPPER
     cargo fetch --locked
-
 build       : |
     unset RUSTC_WRAPPER
     cargo build --release --locked --bin cosmic-workspaces
-
 install     : |
-    make install DESTDIR="$installdir" prefix="/usr" CARGO_TARGET_DIR="target"
+    install -Dm755 target/release/cosmic-workspaces -t $installdir/usr/bin/
